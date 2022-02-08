@@ -1,12 +1,11 @@
 import {Request, Response, Express} from "express";
 import UserControllerI from "../interfaces/UserController";
-import UserDao from "../daos/UserDaos";
+import UserDao from "../daos/UserDao";
 
 export default class UserController implements UserControllerI {
     app: Express;
     userDao: UserDao;
     constructor(app: Express, userDao: UserDao) {
-        console.log('new user')
         this.app = app;
         this.userDao = userDao;
         this.app.get('/users', this.findAllUsers);

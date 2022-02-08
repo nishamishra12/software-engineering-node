@@ -1,17 +1,18 @@
 import express from 'express';
 import UserController from "./controllers/UserController";
-import UserDao from "./daos/UserDaos";
+import UserDao from "./daos/UserDao";
 import bodyParser from "body-parser";
 import TuitController from "./controllers/TuitController";
-import TuitDao from "./daos/TuitDaos";
+import TuitDao from "./daos/TuitDao";
+import mongoose from "mongoose";
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
-
 app.use(bodyParser.json())
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/tuiter');
+const url ="mongodb+srv://nisha_am:passwordprotected@cluster0.odz5c.mongodb.net" +
+    "/myFirstDatabase?retryWrites=true&w=majority"
+mongoose.connect(url);
 
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
