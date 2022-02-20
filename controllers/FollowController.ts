@@ -32,7 +32,6 @@ export default class FollowController implements FollowControllerI {
      * @return FollowController
      */
     public static getInstance = (app: Express): FollowController => {
-        console.log();
         if (FollowController.followController === null) {
             FollowController.followController = new FollowController();
             app.get("/api/users/:uid/follows", FollowController.followController.findAllUsersFollowedByUser);
