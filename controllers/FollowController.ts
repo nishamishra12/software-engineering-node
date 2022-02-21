@@ -37,7 +37,7 @@ export default class FollowController implements FollowControllerI {
             app.get("/api/users/:uid/follows", FollowController.followController.findAllUsersFollowedByUser);
             app.get("/api/users/:uid/following", FollowController.followController.findAllUsersThatFollowUser);
             app.post("/api/users/:uid/follows/:uid1", FollowController.followController.userFollowsAnotherUser);
-            app.delete("/api/users/:uid/unfollows/:uid1", FollowController.followController.userUnfollowsAnotherUser);
+            app.delete("/api/users/:uid/unfollows/:uid1", FollowController.followController.userFollowsAnotherUser);
         }
         return FollowController.followController;
     }
