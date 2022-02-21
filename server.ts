@@ -16,7 +16,6 @@ import UserController from "./controllers/UserController";
 import TuitController from "./controllers/TuitController";
 import LikeController from "./controllers/LikeController";
 import mongoose from "mongoose";
-import FollowController from "./controllers/FollowController";
 
 // build the connection string
 const PROTOCOL = "mongodb+srv";
@@ -43,7 +42,7 @@ const courseController = new CourseController(app);
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likesController = LikeController.getInstance(app);
-const followController = FollowController.getInstance(app);
+
 /**
  * Start a server listening at port 4000 locally
  * but use environment variable PORT on Heroku if available.
