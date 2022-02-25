@@ -11,7 +11,6 @@ import User from "../users/User";
  * @property {Tuit} tuit Tuit being bookmarked
  * @property {User} bookmarkedBy User bookmarking the tuit
  */
-
 export default interface Like {
     tuit: Tuit,
     bookmarkedBy: User
