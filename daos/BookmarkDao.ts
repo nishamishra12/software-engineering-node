@@ -15,6 +15,9 @@ export default class BookmarkDao implements BookmarkDaoI {
 
     public static bookmarkDao: BookmarkDao | null = null;
 
+    private constructor() {
+    }
+
     /**
      * Creates singleton DAO instance
      * @returns BookmarkDao
@@ -25,8 +28,6 @@ export default class BookmarkDao implements BookmarkDaoI {
         }
         return BookmarkDao.bookmarkDao;
     }
-
-    private constructor() {}
 
     /**
      * Uses BookmarkController to retrieve all users who have bookmarked th tuit
@@ -51,6 +52,6 @@ export default class BookmarkDao implements BookmarkDaoI {
      * @param uid user who has unbookmarked the tuit
      * @returns Promise To be notified when the tuit is unbookmarked in the database
      */
-    userUnbookmarksTuit = async(uid: string, tid: string): Promise<any> =>
+    userUnbookmarksTuit = async (uid: string, tid: string): Promise<any> =>
         BookmarkModel.deleteOne({tuit: tid, bookmarkedBy: uid});
 }

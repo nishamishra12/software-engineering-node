@@ -14,18 +14,19 @@ import UserDaoI from "../interfaces/UserDaoI";
 export default class UserDao implements UserDaoI {
     private static userDao: UserDao | null = null;
 
+    private constructor() {
+    }
+
     /**
      * Creates singleton DAO instance
      * @returns UserDao
      */
     public static getInstance = (): UserDao => {
-        if(UserDao.userDao === null) {
+        if (UserDao.userDao === null) {
             UserDao.userDao = new UserDao();
         }
         return UserDao.userDao;
     }
-    
-    private constructor() {}
 
     /**
      * Uses UserModel to retrieve all user documents from users collection

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import CourseDao from "./CourseDao";
 import SectionDao from "./SectionDao";
+
 mongoose.connect('mongodb://localhost:27017/cs5500-test-123');
 
 const sectionDao = SectionDao.getInstance();

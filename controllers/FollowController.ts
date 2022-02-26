@@ -26,6 +26,9 @@ export default class FollowController implements FollowControllerI {
     private static followDao: FollowDao = FollowDao.getInstance();
     private static followController: FollowController | null = null;
 
+    private constructor() {
+    }
+
     /**
      * Creates singleton controller instance
      * @param {Express} app Express instance to declare the RESTful Web service
@@ -42,8 +45,6 @@ export default class FollowController implements FollowControllerI {
         }
         return FollowController.followController;
     }
-
-    private constructor() {}
 
     /**
      * Retrieves all users who are followed by a user from the database

@@ -11,15 +11,18 @@ import TuitDaoI from "../interfaces/TuitDaoI";
  * of Users
  * @property {UserDao} userDao Private single instance of UserDao
  */
-export default class TuitDao implements TuitDaoI{
+export default class TuitDao implements TuitDaoI {
     private static tuitDao: TuitDao | null = null;
+
+    private constructor() {
+    }
+
     public static getInstance = (): TuitDao => {
-        if(TuitDao.tuitDao === null) {
+        if (TuitDao.tuitDao === null) {
             TuitDao.tuitDao = new TuitDao();
         }
         return TuitDao.tuitDao;
     }
-    private constructor() {}
 
     /**
      * Uses TuitModel to retrieve all tuits

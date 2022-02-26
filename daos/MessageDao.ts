@@ -15,25 +15,26 @@ export default class MessageDao implements MessageDaoI {
 
     private static messageDao: MessageDao | null = null
 
+    private constructor() {
+    }
+
     /**
      * Creates singleton DAO instance
      * @returns MessageDao
      */
-    public static getInstance=(): MessageDao =>{
-        if(MessageDao.messageDao == null) {
+    public static getInstance = (): MessageDao => {
+        if (MessageDao.messageDao == null) {
             MessageDao.messageDao = new MessageDao();
         }
         return MessageDao.messageDao;
     }
-
-    private constructor() {}
 
     /**
      * Uses MessageController to retrieve all messages received by the user
      * @param uid of the user for whom messages are received
      * @returns Promise To be notified when the message received by the user are retrieved
      */
-    findMessagesReceivedByUser = async(uid: string): Promise<Message[]> =>
+    findMessagesReceivedByUser = async (uid: string): Promise<Message[]> =>
         MessageModel.find({to: uid});
 
     /**
@@ -41,7 +42,7 @@ export default class MessageDao implements MessageDaoI {
      * @param uid of the user for whom messages are sent
      * @returns Promise To be notified when the message received by the user are retrieved
      */
-    findMessagesSentByUser = async(uid: string): Promise<Message[]> =>
+    findMessagesSentByUser = async (uid: string): Promise<Message[]> =>
         MessageModel.find({from: uid});
 
     /**
@@ -59,6 +60,6 @@ export default class MessageDao implements MessageDaoI {
      * @param uidR of the user who has received the message
      * @returns Promise To be notified when the message received by the user are retrieved
      */
-    userMessagesAnotherUser = async(uidS: string, uidR: string, message: Message): Promise<Message> =>
+    userMessagesAnotherUser = async (uidS: string, uidR: string, message: Message): Promise<Message> =>
         MessageModel.create({...message, to: uidR, from: uidS})
 }

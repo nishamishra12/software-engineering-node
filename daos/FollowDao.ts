@@ -15,24 +15,26 @@ export default class FollowDao implements FollowDaoI {
 
     private static followDao: FollowDao | null = null;
 
+    private constructor() {
+    }
+
     /**
      * Creates singleton DAO instance
      * @returns FollowDao
      */
     public static getInstance = (): FollowDao => {
-        if(FollowDao.followDao === null) {
+        if (FollowDao.followDao === null) {
             FollowDao.followDao = new FollowDao();
         }
         return FollowDao.followDao;
     }
-    private constructor() {}
 
     /**
      * Uses FollowController to retrieve all users who have been followed by this user
      * @param uid all users followed by this user
      * @returns Promise To be notified when the user has been retrieved from the database
      */
-    findAllUsersFollowedByUser = async(uid: string): Promise<Follow[]> =>
+    findAllUsersFollowedByUser = async (uid: string): Promise<Follow[]> =>
         FollowModel
             .find({followedBy: uid})
             .populate("userFollowed")
@@ -43,7 +45,7 @@ export default class FollowDao implements FollowDaoI {
      * @param uid all users who follow this user
      * @returns Promise To be notified when the user has been retrieved from the database
      */
-    findAllUsersThatFollowUser = async(uid: string): Promise<Follow[]> =>
+    findAllUsersThatFollowUser = async (uid: string): Promise<Follow[]> =>
         FollowModel
             .find({userFollowed: uid})
             .populate("followedBy")
@@ -55,8 +57,8 @@ export default class FollowDao implements FollowDaoI {
      * @param uid1 user who has been followed
      * @returns Promise To be notified when the user has been followed from the database
      */
-    userFollowsAnotherUser = async(uid: string, uid1: string): Promise<Follow> =>
-        FollowModel.create({userFollowed: uid1, followedBy:uid});
+    userFollowsAnotherUser = async (uid: string, uid1: string): Promise<Follow> =>
+        FollowModel.create({userFollowed: uid1, followedBy: uid});
 
     /**
      * Uses FollowController to unfollow another user
@@ -64,6 +66,6 @@ export default class FollowDao implements FollowDaoI {
      * @param uid1 user who has been unfollowed
      * @returns Promise To be notified when the user has been unfollowed from the database
      */
-    userUnfollowsAnotherUser = async(uid: string, uid1: string): Promise<any> =>
-        FollowModel.deleteOne({userFollowed: uid1, followedBy:uid});
+    userUnfollowsAnotherUser = async (uid: string, uid1: string): Promise<any> =>
+        FollowModel.deleteOne({userFollowed: uid1, followedBy: uid});
 }

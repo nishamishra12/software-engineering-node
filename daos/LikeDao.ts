@@ -14,17 +14,19 @@ import Like from "../models/likes/Like";
 export default class LikeDao implements LikeDaoI {
     private static likeDao: LikeDao | null = null;
 
+    private constructor() {
+    }
+
     /**
      * Creates singleton DAO instance
      * @returns LikeDao
      */
     public static getInstance = (): LikeDao => {
-        if(LikeDao.likeDao === null) {
+        if (LikeDao.likeDao === null) {
             LikeDao.likeDao = new LikeDao();
         }
         return LikeDao.likeDao;
     }
-    private constructor() {}
 
     /**
      * Uses LikeController to retrieve all users who have liked the tuit

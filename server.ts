@@ -6,7 +6,7 @@
  *     <li>tuits</li>
  *     <li>likes</li>
  * </ul>
- * 
+ *
  * Connects to a remote MongoDB instance hosted on the Atlas cloud database
  * service
  */

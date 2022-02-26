@@ -23,7 +23,10 @@ import {Express, Request, Response} from "express";
 export default class BookmarkController implements BookmarkControllerI {
 
     private static bookmarkDao: BookmarkDao = BookmarkDao.getInstance();
-    private static bookmarkController: BookmarkController | null=null;
+    private static bookmarkController: BookmarkController | null = null;
+
+    private constructor() {
+    }
 
     /**
      * Creates singleton controller instance
@@ -31,8 +34,8 @@ export default class BookmarkController implements BookmarkControllerI {
      * API
      * @return BookmarkController
      */
-    public static getInstance=(app: Express): BookmarkController => {
-        if(BookmarkController.bookmarkController === null) {
+    public static getInstance = (app: Express): BookmarkController => {
+        if (BookmarkController.bookmarkController === null) {
             BookmarkController.bookmarkController = new BookmarkController();
             app.get("/api/users/:uid/bookmarks", BookmarkController.bookmarkController.findAllTuitsBookmarkedByUser);
             app.post("/api/users/:uid/bookmarks/:tid", BookmarkController.bookmarkController.userBookmarksTuit);
@@ -40,8 +43,6 @@ export default class BookmarkController implements BookmarkControllerI {
         }
         return BookmarkController.bookmarkController;
     }
-
-    private constructor() {}
 
     /**
      * Retrieves all users that bookmarked a tuit from the database
