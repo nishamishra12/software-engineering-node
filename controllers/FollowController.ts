@@ -18,8 +18,8 @@ import FollowDao from "../daos/FollowDao";
  *     <li>DELETE /api/users/:uid/unfollows/:uid to record that a user
  *     no longer follows a user</li>
  * </ul>
- * @property {LikeDao} likeDao Singleton DAO implementing likes CRUD operations
- * @property {LikeController} LikeController Singleton controller implementing
+ * @property {FollowDao} followDao Singleton DAO implementing likes CRUD operations
+ * @property {FollowController} followController Singleton controller implementing
  * RESTful Web service API
  */
 export default class FollowController implements FollowControllerI {

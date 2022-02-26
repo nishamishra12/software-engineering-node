@@ -15,8 +15,3 @@ export default interface Follow {
     userFollowed: User,
     followedBy: User
 };
-
-//1. Nisha follows sahil, varun: userfollowed: Sahil, Varun, followedBy: Nisha
-//2. Nisha followed by Sahil: userfollowed: Nisha, followedBy: Sahil
-//findAllUsersFollowedByUser: uid - Nisha id: json-> sahil, varun
-//findAllUsersThatFollowUser: uid - Nisha:
