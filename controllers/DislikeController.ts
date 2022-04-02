@@ -1,5 +1,5 @@
 /**
- * @file Controller RESTful Web service API for likes resource
+ * @file Controller RESTful Web service API for likes resource.
  */
 import {Express, Request, Response} from "express";
 import TuitDao from "../daos/TuitDao";
