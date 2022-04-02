@@ -50,12 +50,12 @@ let sess = {
     saveUninitialized: true,
     resave: true,
     cookie: {
-        sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
+        sameSite: process.env.NODE_ENV === "PRODUCTION" ? 'none' : 'lax',
         secure: false,
     }
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'PRODUCTION') {
     app.set('trust proxy', 1) // trust first proxy
     sess.cookie.secure = true
 }
