@@ -52,12 +52,13 @@ let sess = {
     resave: true,
     cookie: {
         sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
-        secure: process.env.NODE_ENV === "production",
+        secure: false,
     }
 }
 
 if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1) // trust first proxy
+    sess.cookie.secure = true
 }
 
 app.use(session(sess))
