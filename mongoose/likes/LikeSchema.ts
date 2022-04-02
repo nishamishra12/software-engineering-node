@@ -3,7 +3,7 @@ import Like from "../../models/likes/Like";
 
 /**
  * @file Implements mongoose model to CRUD
- * documents in the likes schema
+ * documents in the Likes Schema.
  */
 const LikeSchema = new mongoose.Schema<Like>({
     tuit: {type: Schema.Types.ObjectId, ref: "TuitModel"},

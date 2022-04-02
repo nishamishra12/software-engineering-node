@@ -9,7 +9,7 @@ import DislikeDao from "../daos/DislikeDao";
 
 /**
  * @class TuitController Implements RESTful Web service API for likes resource.
- * Defines the following HTTP endpoints:
+ * Defines the following HTTP endpoint:
  * <ul>
  *     <li>GET /api/users/:uid/likes to retrieve all the tuits liked by a user
  *     </li>
