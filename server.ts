@@ -26,6 +26,13 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const app = express();
+app.use(cors({
+    credentials: true,
+    origin: process.env.CORS_ORIGIN
+    // origin: 'http://localhost:3000'
+}));
+
 // build the connection string
 const PROTOCOL = "mongodb+srv";
 const DB_USERNAME = process.env.DB_USERNAME;
@@ -37,14 +44,6 @@ const DB_NAME = "myFirstDatabase";
 const DB_QUERY = "retryWrites=true&w=majority";
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;// connect to the database
 mongoose.connect(connectionString);
-
-const app = express();
-app.use(cors({
-    credentials: true,
-    origin: process.env.CORS_ORIGIN
-    // origin: 'http://localhost:3000'
-}));
-
 
 let sess = {
     secret: process.env.EXPRESS_SESSION_SECRET,
