@@ -21,12 +21,17 @@ import mongoose from "mongoose";
 import GroupController from "./controllers/GroupController";
 const cors = require("cors");
 const session = require("express-session");
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // build the connection string
 const PROTOCOL = "mongodb+srv";
 const DB_USERNAME = process.env.DB_USERNAME;
 const DB_PASSWORD = process.env.DB_PASSWORD;
-const HOST = "cluster0.m8jeh.mongodb.net";
+// const DB_USERNAME = "nisha_am";
+// const DB_PASSWORD = "passwordprotected";
+const HOST = "cluster0.odz5c.mongodb.net";
 const DB_NAME = "myFirstDatabase";
 const DB_QUERY = "retryWrites=true&w=majority";
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;// connect to the database
@@ -36,7 +41,9 @@ const app = express();
 app.use(cors({
     credentials: true,
     origin: process.env.CORS_ORIGIN
+    // origin: 'http://localhost:3000'
 }));
+
 
 let sess = {
     secret: process.env.EXPRESS_SESSION_SECRET,
