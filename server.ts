@@ -30,8 +30,23 @@ const app = express();
 app.use(cors({
     credentials: true,
     origin: process.env.CORS_ORIGIN
-    // origin: 'http://localhost:3000'
 }));
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", process.env.CORS_ORIGIN)
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+    if (req.method === "OPTIONS") {
+        res.header(
+            "Access-Control-Allow-Methods",
+            "POST, PUT, PATCH, GET, DELETE"
+        )
+        return res.status(200).json({})
+    }
+    next()
+})
 
 // build the connection string
 const PROTOCOL = "mongodb+srv";
