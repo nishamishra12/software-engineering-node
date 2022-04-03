@@ -68,7 +68,7 @@ export default class DislikeController implements DislikeControllerI {
         const uid = req.params.uid;
         // @ts-ignore
         const profile = req.session['profile'];
-        const userId = uid === "me" && profile ?
+        const userId = uid === "my" && profile ?
             profile._id : uid;
 
         DislikeController.dislikeDao.findAllTuitsDisLikedByUser(userId)
@@ -95,7 +95,7 @@ export default class DislikeController implements DislikeControllerI {
         const tid = req.params.tid;
         // @ts-ignore
         const profile = req.session['profile'];
-        const userId = uid === "me" && profile ?
+        const userId = uid === "my" && profile ?
             profile._id : uid;
         try {
             const userAlreadyDisLikedTuit = await dislikeDao.findUserDisLikesTuit(userId, tid);
