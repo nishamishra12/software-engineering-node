@@ -6,7 +6,6 @@ import Tuit from "../models/tuits/Tuit";
 import {Express, Request, Response} from "express";
 import TuitControllerI from "../interfaces/TuitControllerI";
 
-
 /**
  * @class TuitController Implements RESTful Web service API for tuits resource.
  * Defines the following HTTP endpoints:
@@ -57,7 +56,7 @@ export default class TuitController implements TuitControllerI {
     findAllTuits = (req: Request, res: Response) =>
         TuitController.tuitDao.findAllTuits()
             .then((tuits: Tuit[]) => res.json(tuits));
-    
+
     /**
      * @param {Request} req Represents request from client, including path
      * parameter tid identifying the primary key of the tuit to be retrieved
@@ -77,13 +76,14 @@ export default class TuitController implements TuitControllerI {
      */
     findAllTuitsByUser = (req: Request, res: Response) => {
         // @ts-ignore
-        let userId = req.params.uid === "me" && req.session['profile'] ?
+        let userId = req.params.uid === "my" && req.session['profile'] ?
             // @ts-ignore
             req.session['profile']._id : req.params.uid;
-        if (userId === "me") {
-            res.sendStatus(503);
-            return;
-        }
+        // if (userId === "my") {
+        //     res.sendStatus(503);
+        //     return;
+        // }
+
         TuitController.tuitDao.findAllTuitsByUser(userId)
             .then((tuits: Tuit[]) => res.json(tuits));
     }
@@ -98,13 +98,14 @@ export default class TuitController implements TuitControllerI {
      */
     createTuitByUser = (req: Request, res: Response) => {
         // @ts-ignore
-        let userId = req.params.uid === "me" && req.session['profile'] ?
+        let userId = req.params.uid === "my" && req.session['profile'] ?
             // @ts-ignore
             req.session['profile']._id : req.params.uid;
-        if (userId === "me") {
-            res.sendStatus(503);
-            return;
-        }
+        // if (userId === "my") {
+        //     res.sendStatus(503);
+        //     return;
+        // }
+
         TuitController.tuitDao.createTuitByUser(userId, req.body)
             .then((tuit: Tuit) => res.json(tuit));
     }
